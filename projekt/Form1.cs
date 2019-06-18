@@ -25,6 +25,7 @@ namespace projekt
                 string myConnection = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
                 MySqlConnection myConn = new MySqlConnection(myConnection); //pozwala na nawiązanie połączenia z BD
                 MySqlCommand SelectCommand = new MySqlCommand(" select * from database.edata where username='" + this.username_txt.Text + "'and password = '" + this.password_txt.Text + "' ;", myConn);
+                //pobiera i porownuje dane z kolumn BD username i password
                 MySqlDataReader myReader;
 
                 myConn.Open();
@@ -36,8 +37,13 @@ namespace projekt
                 }
                 if (count == 1)
                 {
-                    MessageBox.Show("Username and password is correct."); 
+                    MessageBox.Show("Username and password is correct.");
                     //jesli poprawnie wpiszemy login i haslo pojawi sie komunikat o poprawnym zalogowaniu
+                    this.Hide();
+                    Form2 f2 = new Form2();
+                    f2.ShowDialog();
+                    this.Close();
+                    //otworzy sie nam okno Form2, a poprzednie zostanie zamkniete
                 }
                 else if (count > 1)
                 {
