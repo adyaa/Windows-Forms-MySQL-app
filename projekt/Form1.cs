@@ -24,12 +24,29 @@ namespace projekt
             {
                 string myConnection = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
                 MySqlConnection myConn = new MySqlConnection(myConnection); //pozwala na nawiązanie połączenia z BD
-                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter(); //reprezentuje zestaw komend i połączenia z BD
-                myDataAdapter.SelectCommand = new MySqlCommand(" select * database.edata ;", myConn); //zaznaczamy wszystkie rekordy z tabeli edata pracownikow
-                MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter); //automatycznie generuje polecenia tabeli używane do uzgadniania zmian wprowadzonych z powiązaną BD
+                MySqlCommand SelectCommand = new MySqlCommand(" select * from database.edata where username='" + this.username_txt.Text + "'and password = '" + this.password_txt.Text + "' ;", myConn);
+                MySqlDataReader myReader;
+
                 myConn.Open();
-                MessageBox.Show("Connected");
-                myConn.Close(); //po prawidlowym polaczeniu sie wyskoczy informacja 'connected'
+                myReader = SelectCommand.ExecuteReader();
+                int count = 0;
+                while (myReader.Read())
+                {
+                    count = count + 1;
+                }
+                if (count == 1)
+                {
+                    MessageBox.Show("Username and password is correct.");
+                }
+                else if (count > 1)
+                {
+                    MessageBox.Show("Duplicate username and password. Try again.");
+                }
+                else
+                {
+                    MessageBox.Show("Username and password is not correct. Try again.");
+                }
+                myConn.Close(); //zamkniecie polaczenia
             }
 
             catch (Exception ex) //reprezentuje bledy wystepujace podczas nieprawidlowego polaczenia z BD
@@ -49,6 +66,16 @@ namespace projekt
         private void label1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
