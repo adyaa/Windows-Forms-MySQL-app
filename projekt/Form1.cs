@@ -28,36 +28,43 @@ namespace projekt
                 //pobiera i porownuje dane z kolumn BD username i password
                 MySqlDataReader myReader;
 
-                myConn.Open();
-                myReader = SelectCommand.ExecuteReader();
-                int count = 0;
-                while (myReader.Read())
+                if (username_txt.Text == "" || password_txt.Text == "")
                 {
-                    count = count + 1;
-                }
-                if (count == 1)
-                {
-                    MessageBox.Show("Username and password is correct.");
-                    //jesli poprawnie wpiszemy login i haslo pojawi sie komunikat o poprawnym zalogowaniu
-                    this.Hide();
-                    Form2 f2 = new Form2();
-                    f2.ShowDialog();
-                    this.Close();
-                    //otworzy sie nam okno Form2, a poprzednie zostanie zamkniete
-                }
-                else if (count > 1)
-                {
-                    MessageBox.Show("Duplicate username and password. Try again.");
-                    // jesli gdzies w bazie danych zostanie wpisany identyczny login i haslo to zablokuje mozliwosc logowania
-                }
+                    MessageBox.Show("One of your fields is empty. Fill it and try again!");
+                    //zabezpieczenie na wypadek zostawienia pustego pola
+                } 
                 else
                 {
-                    MessageBox.Show("Username and password is not correct. Try again.");
-                    //zablokuje mozliwosc logowania jesli nie znajdzie w bazie danych takiego loginu i hasla
+                    myConn.Open();
+                    myReader = SelectCommand.ExecuteReader();
+                    int count = 0;
+                    while (myReader.Read())
+                    {
+                        count = count + 1;
+                    }
+                    if (count == 1)
+                    {
+                        MessageBox.Show("Username and password is correct.");
+                        //jesli poprawnie wpiszemy login i haslo pojawi sie komunikat o poprawnym zalogowaniu
+                        this.Hide();
+                        Form2 f2 = new Form2();
+                        f2.ShowDialog();
+                        this.Close();
+                        //otworzy sie nam okno Form2, a poprzednie zostanie zamkniete
+                    }
+                    else if (count > 1)
+                    {
+                        MessageBox.Show("Duplicate username and password. Try again.");
+                        // jesli gdzies w bazie danych zostanie wpisany identyczny login i haslo to zablokuje mozliwosc logowania
+                    }
+                    else
+                    {
+                        MessageBox.Show("Username and password is not correct. Try again.");
+                        //zablokuje mozliwosc logowania jesli nie znajdzie w bazie danych takiego loginu i hasla
+                    }
+                    myConn.Close(); //zamkniecie polaczenia
                 }
-                myConn.Close(); //zamkniecie polaczenia
             }
-
             catch (Exception ex) //reprezentuje bledy wystepujace podczas nieprawidlowego polaczenia z BD
             {
                 MessageBox.Show(ex.Message);
