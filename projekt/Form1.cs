@@ -36,15 +36,18 @@ namespace projekt
                 }
                 if (count == 1)
                 {
-                    MessageBox.Show("Username and password is correct.");
+                    MessageBox.Show("Username and password is correct."); 
+                    //jesli poprawnie wpiszemy login i haslo pojawi sie komunikat o poprawnym zalogowaniu
                 }
                 else if (count > 1)
                 {
                     MessageBox.Show("Duplicate username and password. Try again.");
+                    // jesli gdzies w bazie danych zostanie wpisany identyczny login i haslo to zablokuje mozliwosc logowania
                 }
                 else
                 {
                     MessageBox.Show("Username and password is not correct. Try again.");
+                    //zablokuje mozliwosc logowania jesli nie znajdzie w bazie danych takiego loginu i hasla
                 }
                 myConn.Close(); //zamkniecie polaczenia
             }
@@ -74,6 +77,11 @@ namespace projekt
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
