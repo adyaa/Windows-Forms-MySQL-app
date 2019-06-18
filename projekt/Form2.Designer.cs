@@ -33,10 +33,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Eid_txt = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Name_txt = new System.Windows.Forms.TextBox();
+            this.Surname_txt = new System.Windows.Forms.TextBox();
+            this.Age_txt = new System.Windows.Forms.TextBox();
+            this.Save_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -82,46 +82,46 @@
             this.Eid_txt.Size = new System.Drawing.Size(100, 22);
             this.Eid_txt.TabIndex = 4;
             // 
-            // textBox2
+            // Name_txt
             // 
-            this.textBox2.Location = new System.Drawing.Point(301, 153);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 5;
+            this.Name_txt.Location = new System.Drawing.Point(301, 153);
+            this.Name_txt.Name = "Name_txt";
+            this.Name_txt.Size = new System.Drawing.Size(100, 22);
+            this.Name_txt.TabIndex = 5;
             // 
-            // textBox3
+            // Surname_txt
             // 
-            this.textBox3.Location = new System.Drawing.Point(301, 206);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 6;
+            this.Surname_txt.Location = new System.Drawing.Point(301, 206);
+            this.Surname_txt.Name = "Surname_txt";
+            this.Surname_txt.Size = new System.Drawing.Size(100, 22);
+            this.Surname_txt.TabIndex = 6;
             // 
-            // textBox4
+            // Age_txt
             // 
-            this.textBox4.Location = new System.Drawing.Point(301, 260);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 7;
+            this.Age_txt.Location = new System.Drawing.Point(301, 260);
+            this.Age_txt.Name = "Age_txt";
+            this.Age_txt.Size = new System.Drawing.Size(100, 22);
+            this.Age_txt.TabIndex = 7;
             // 
-            // button1
+            // Save_btn
             // 
-            this.button1.Location = new System.Drawing.Point(246, 327);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Save_btn.Location = new System.Drawing.Point(246, 327);
+            this.Save_btn.Name = "Save_btn";
+            this.Save_btn.Size = new System.Drawing.Size(75, 23);
+            this.Save_btn.TabIndex = 8;
+            this.Save_btn.Text = "Save";
+            this.Save_btn.UseVisualStyleBackColor = true;
+            this.Save_btn.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.Save_btn);
+            this.Controls.Add(this.Age_txt);
+            this.Controls.Add(this.Surname_txt);
+            this.Controls.Add(this.Name_txt);
             this.Controls.Add(this.Eid_txt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -141,9 +141,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Eid_txt;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox Name_txt;
+        private System.Windows.Forms.TextBox Surname_txt;
+        private System.Windows.Forms.TextBox Age_txt;
+        private System.Windows.Forms.Button Save_btn;
     }
 }
