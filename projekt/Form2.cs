@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient; //do polaczenia z baza danych
+using System.IO; //umozliwia odczyt i zapis do plikow
 
 namespace projekt
 {
@@ -106,15 +107,22 @@ namespace projekt
         private void button1_Click(object sender, EventArgs e)
         //dodawanie nowego pracownika do bazy danych
         {
+            //umozliwia pobieranie zdjecia
+            byte[] imageBt = null;
+            FileStream fstream = new FileStream(this.textBox_img.Text, FileMode.Open, FileAccess.Read); //otwiera polaczenie
+            BinaryReader br = new BinaryReader(fstream); //czyta plik
+            imageBt = br.ReadBytes((int)fstream.Length); 
+
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
-            string Query = "insert into database.edata (Eid,name,surname,age,gender,birthdate) values ('" + this.Eid_txt.Text + "','" + this.Name_txt.Text + "','" 
-                + this.Surname_txt.Text + "','" + this.Age_txt.Text + "','" + Gender + "','" + this.Birthdate_txt.Text + "') ;";
+            string Query = "insert into database.edata (Eid,name,surname,age,gender,birthdate,image) values ('" + this.Eid_txt.Text + "','" + this.Name_txt.Text + "','" 
+                + this.Surname_txt.Text + "','" + this.Age_txt.Text + "','" + Gender + "','" + this.Birthdate_txt.Text + "', @IMG) ;";
             MySqlConnection conDataBase = new MySqlConnection(constring);
             MySqlCommand cmdDataBase = new MySqlCommand(Query, conDataBase);
             MySqlDataReader myReader;
             try
             {
                 conDataBase.Open();
+                cmdDataBase.Parameters.Add(new MySqlParameter("@IMG", imageBt));
                 myReader = cmdDataBase.ExecuteReader();
                 MessageBox.Show("Saved"); //po prawidlowym dodaniu rekordu wyskoczy okno z napisem Saved
             }
@@ -381,8 +389,14 @@ namespace projekt
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 string picPath = dlg.FileName.ToString(); //kopiuje sciezke zdjecia do zmiennej picPath
+                textBox_img.Text = picPath; //wyswietli w tekstboxie sciezke zdjecia
                 pictureBox1.ImageLocation = picPath;
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
