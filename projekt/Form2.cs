@@ -23,6 +23,7 @@ namespace projekt
             timer1.Start();
         }
 
+        string Gender;
         void Fillcombo1()
         //funkcja ta pobiera z kolumny "Eid" jej wartosci, zapisuje pod postacia sEid, a nastepnie wyswietla w comboBoxie jako opcje do wyboru
         {
@@ -106,7 +107,8 @@ namespace projekt
         //dodawanie nowego pracownika do bazy danych
         {
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
-            string Query = "insert into database.edata (Eid,name,surname,age,birthdate) values ('" + this.Eid_txt.Text + "','" + this.Name_txt.Text + "','" + this.Surname_txt.Text + "','" + this.Age_txt.Text + "','" + this.Birthdate_txt.Text + "') ;";
+            string Query = "insert into database.edata (Eid,name,surname,age,gender,birthdate) values ('" + this.Eid_txt.Text + "','" + this.Name_txt.Text + "','" 
+                + this.Surname_txt.Text + "','" + this.Age_txt.Text + "','" + Gender + "','" + this.Birthdate_txt.Text + "') ;";
             MySqlConnection conDataBase = new MySqlConnection(constring);
             MySqlCommand cmdDataBase = new MySqlCommand(Query, conDataBase);
             MySqlDataReader myReader;
@@ -360,6 +362,27 @@ namespace projekt
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e) //znacznik plci meskiej
+        {
+            Gender = "Male";
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e) //znacznik plci zenskiej
+        {
+            Gender = "Female";
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "JPG Files(*.jpg)|*.jpg|PNG Files(*.png)|*.png|All Files(*.*)|*.*";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                string picPath = dlg.FileName.ToString(); //kopiuje sciezke zdjecia do zmiennej picPath
+                pictureBox1.ImageLocation = picPath;
+            }
         }
     }
 }
