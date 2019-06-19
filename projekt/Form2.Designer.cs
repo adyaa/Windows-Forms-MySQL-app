@@ -42,6 +42,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -87,7 +89,7 @@
             // Eid_txt
             // 
             this.Eid_txt.Location = new System.Drawing.Point(156, 67);
-            this.Eid_txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Eid_txt.Margin = new System.Windows.Forms.Padding(2);
             this.Eid_txt.Name = "Eid_txt";
             this.Eid_txt.Size = new System.Drawing.Size(76, 20);
             this.Eid_txt.TabIndex = 4;
@@ -95,7 +97,7 @@
             // Name_txt
             // 
             this.Name_txt.Location = new System.Drawing.Point(156, 111);
-            this.Name_txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name_txt.Margin = new System.Windows.Forms.Padding(2);
             this.Name_txt.Name = "Name_txt";
             this.Name_txt.Size = new System.Drawing.Size(76, 20);
             this.Name_txt.TabIndex = 5;
@@ -103,7 +105,7 @@
             // Surname_txt
             // 
             this.Surname_txt.Location = new System.Drawing.Point(156, 154);
-            this.Surname_txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Surname_txt.Margin = new System.Windows.Forms.Padding(2);
             this.Surname_txt.Name = "Surname_txt";
             this.Surname_txt.Size = new System.Drawing.Size(76, 20);
             this.Surname_txt.TabIndex = 6;
@@ -111,15 +113,15 @@
             // Age_txt
             // 
             this.Age_txt.Location = new System.Drawing.Point(156, 198);
-            this.Age_txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Age_txt.Margin = new System.Windows.Forms.Padding(2);
             this.Age_txt.Name = "Age_txt";
             this.Age_txt.Size = new System.Drawing.Size(76, 20);
             this.Age_txt.TabIndex = 7;
             // 
             // Save_btn
             // 
-            this.Save_btn.Location = new System.Drawing.Point(51, 251);
-            this.Save_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Save_btn.Location = new System.Drawing.Point(83, 252);
+            this.Save_btn.Margin = new System.Windows.Forms.Padding(2);
             this.Save_btn.Name = "Save_btn";
             this.Save_btn.Size = new System.Drawing.Size(75, 23);
             this.Save_btn.TabIndex = 8;
@@ -129,7 +131,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(51, 292);
+            this.button1.Location = new System.Drawing.Point(295, 252);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -139,7 +141,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(156, 251);
+            this.button2.Location = new System.Drawing.Point(188, 252);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -174,11 +176,20 @@
             this.comboBox3.TabIndex = 14;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(479, 46);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(455, 242);
+            this.dataGridView1.TabIndex = 16;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 366);
+            this.ClientSize = new System.Drawing.Size(965, 366);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
@@ -193,9 +204,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form2";
             this.Text = "Form2";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +229,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

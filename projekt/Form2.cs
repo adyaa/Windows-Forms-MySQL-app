@@ -19,6 +19,7 @@ namespace projekt
             Fillcombo1();
             Fillcombo2();
             Fillcombo3();
+            load_table();
         }
 
         void Fillcombo1()
@@ -255,5 +256,33 @@ namespace projekt
                 MessageBox.Show(ex.Message);
             }
         }
+
+        void load_table()
+        {
+            string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
+            MySqlConnection conDataBase = new MySqlConnection(constring);
+            MySqlCommand cmdDataBase = new MySqlCommand("select * from database.edata;", conDataBase);
+
+
+            try
+            {
+                MySqlDataAdapter sda = new MySqlDataAdapter();
+                sda.SelectCommand = cmdDataBase;
+                DataTable dbdataset = new DataTable();
+                sda.Fill(dbdataset);
+                BindingSource bSource = new BindingSource();
+
+                bSource.DataSource = dbdataset;
+                dataGridView1.DataSource = bSource;
+                sda.Update(dbdataset);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        
     }
 }
