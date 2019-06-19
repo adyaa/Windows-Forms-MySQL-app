@@ -169,12 +169,91 @@ namespace projekt
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
+            string Query = "select * from database.edata where name = '" + comboBox1.Text + "';";
+            MySqlConnection conDataBase = new MySqlConnection(constring);
+            MySqlCommand cmdDataBase = new MySqlCommand(Query, conDataBase);
+            MySqlDataReader myReader;
+            try
+            {
+                conDataBase.Open();
+                myReader = cmdDataBase.ExecuteReader();
+                while (myReader.Read())
+                {
+                    string sName = myReader.GetString("name");
+                    Name_txt.Text = sName;
+                }
+                conDataBase.Close();
+               
+            }
 
+            catch (Exception ex) //reprezentuje bledy wystepujace podczas nieprawidlowego polaczenia z BD
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
+            string Query = "select * from database.edata where Eid = '" + comboBox2.Text + "';";
+            MySqlConnection conDataBase = new MySqlConnection(constring);
+            MySqlCommand cmdDataBase = new MySqlCommand(Query, conDataBase);
+            MySqlDataReader myReader;
+            try
+            {
+                conDataBase.Open();
+                myReader = cmdDataBase.ExecuteReader();
+                while (myReader.Read())
+                {
+                    string sEid = myReader.GetInt32("Eid").ToString(); //nalezy przekonwertowac int na string aby wyswietlil sie w textboxie
+                    string sName = myReader.GetString("name");
+                    string sSurname = myReader.GetString("surname");
+                    string sAge = myReader.GetInt32("age").ToString(); //nalezy przekonwertowac int na string aby wyswietlil sie w textboxie
+                    Eid_txt.Text = sEid;
+                    Name_txt.Text = sName;
+                    Surname_txt.Text = sSurname;
+                    Age_txt.Text = sAge;
+
+                }
+                //funkcja ta pobiera z kolumny "Eid" jej wartosci, zapisuje pod postacia sEid, a nastepnie wyswietla w comboBoxie jako opcje do wyboru ktorymi mozemy uzupelnic textboxy jednym kliknieciem
+                conDataBase.Close();
+            }
+
+            catch (Exception ex) //reprezentuje bledy wystepujace podczas nieprawidlowego polaczenia z BD
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
+            string Query = "select * from database.edata where surname = '" + comboBox3.Text + "';";
+            MySqlConnection conDataBase = new MySqlConnection(constring);
+            MySqlCommand cmdDataBase = new MySqlCommand(Query, conDataBase);
+            MySqlDataReader myReader;
+            try
+            {
+                conDataBase.Open();
+                myReader = cmdDataBase.ExecuteReader();
+                while (myReader.Read())
+                {
+                    string sSurname = myReader.GetString("surname");
+                    Surname_txt.Text = sSurname;
+                }
+                conDataBase.Close(); 
+            }
+
+            catch (Exception ex) //reprezentuje bledy wystepujace podczas nieprawidlowego polaczenia z BD
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
