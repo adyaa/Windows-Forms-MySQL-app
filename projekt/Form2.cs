@@ -38,5 +38,26 @@ namespace projekt
             }
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
+            string Query = "update database.edata set Eid = '" + this.Eid_txt.Text + "', name = '" + this.Name_txt.Text + "', surname = '" + this.Surname_txt.Text + "', age = '" + this.Age_txt.Text + "' where Eid = '" + this.Eid_txt.Text + "' ;";
+            //dodajemy na koncu where, poniewaz Eid jest kluczem unikalnym i program musi wiedziec do ktorego pracownika odnosi sie zmiana
+            MySqlConnection conDataBase = new MySqlConnection(constring);
+            MySqlCommand cmdDataBase = new MySqlCommand(Query, conDataBase);
+            MySqlDataReader myReader;
+            try
+            {
+                conDataBase.Open();
+                myReader = cmdDataBase.ExecuteReader();
+                MessageBox.Show("Updated");
+            }
+
+            catch (Exception ex) //reprezentuje bledy wystepujace podczas nieprawidlowego polaczenia z BD
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
