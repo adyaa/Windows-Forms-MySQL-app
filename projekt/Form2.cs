@@ -20,6 +20,7 @@ namespace projekt
             Fillcombo2();
             Fillcombo3();
             load_table();
+            timer1.Start();
         }
 
         void Fillcombo1()
@@ -257,24 +258,24 @@ namespace projekt
             }
         }
 
-        void load_table()
+        void load_table() //funkcja pobierajaca nam tabele z bazy danych i wyswietlajaca ja w aplikacji
         {
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
             MySqlConnection conDataBase = new MySqlConnection(constring);
-            MySqlCommand cmdDataBase = new MySqlCommand("select * from database.edata;", conDataBase);
+            MySqlCommand cmdDataBase = new MySqlCommand("select * from database.edata;", conDataBase); //polaczenie z baza danych
 
 
             try
             {
-                MySqlDataAdapter sda = new MySqlDataAdapter();
-                sda.SelectCommand = cmdDataBase;
-                DataTable dbdataset = new DataTable();
-                sda.Fill(dbdataset);
+                MySqlDataAdapter sda = new MySqlDataAdapter(); 
+                sda.SelectCommand = cmdDataBase; //reprezentuje jedna tabele danych w pamieci
+                DataTable dbdataset = new DataTable();  //tworzy tabele
+                sda.Fill(dbdataset); //dodaje lub odswieza wiersze w tabeli
                 BindingSource bSource = new BindingSource();
 
-                bSource.DataSource = dbdataset;
+                bSource.DataSource = dbdataset; 
                 dataGridView1.DataSource = bSource;
-                sda.Update(dbdataset);
+                sda.Update(dbdataset); //pobiera lub ustawia zrodlo danych, ktore w DataGridView sa wyswietlane dane
             }
 
             catch (Exception ex)
@@ -283,6 +284,16 @@ namespace projekt
             }
 
         }
-        
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime dateTime = DateTime.Now; //ustawianie daty na obecna
+            this.time_lbl.Text = dateTime.ToString(); //wyswietlanie daty w polu tekstowym, konwersja na string
+        }
     }
 }
