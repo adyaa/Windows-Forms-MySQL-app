@@ -46,13 +46,20 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.time_lbl = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Birthdate_txt = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 69);
+            this.label1.Location = new System.Drawing.Point(14, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 13);
@@ -62,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 114);
+            this.label2.Location = new System.Drawing.Point(14, 82);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
@@ -72,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(66, 157);
+            this.label3.Location = new System.Drawing.Point(14, 125);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
@@ -82,16 +89,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(66, 201);
+            this.label4.Location = new System.Drawing.Point(14, 169);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Age";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Eid_txt
             // 
-            this.Eid_txt.Location = new System.Drawing.Point(156, 67);
+            this.Eid_txt.Location = new System.Drawing.Point(104, 35);
             this.Eid_txt.Margin = new System.Windows.Forms.Padding(2);
             this.Eid_txt.Name = "Eid_txt";
             this.Eid_txt.Size = new System.Drawing.Size(76, 20);
@@ -99,7 +107,7 @@
             // 
             // Name_txt
             // 
-            this.Name_txt.Location = new System.Drawing.Point(156, 111);
+            this.Name_txt.Location = new System.Drawing.Point(104, 79);
             this.Name_txt.Margin = new System.Windows.Forms.Padding(2);
             this.Name_txt.Name = "Name_txt";
             this.Name_txt.Size = new System.Drawing.Size(76, 20);
@@ -107,23 +115,25 @@
             // 
             // Surname_txt
             // 
-            this.Surname_txt.Location = new System.Drawing.Point(156, 154);
+            this.Surname_txt.Location = new System.Drawing.Point(104, 122);
             this.Surname_txt.Margin = new System.Windows.Forms.Padding(2);
             this.Surname_txt.Name = "Surname_txt";
             this.Surname_txt.Size = new System.Drawing.Size(76, 20);
             this.Surname_txt.TabIndex = 6;
+            this.Surname_txt.TextChanged += new System.EventHandler(this.Surname_txt_TextChanged);
             // 
             // Age_txt
             // 
-            this.Age_txt.Location = new System.Drawing.Point(156, 198);
+            this.Age_txt.Location = new System.Drawing.Point(104, 166);
             this.Age_txt.Margin = new System.Windows.Forms.Padding(2);
             this.Age_txt.Name = "Age_txt";
             this.Age_txt.Size = new System.Drawing.Size(76, 20);
             this.Age_txt.TabIndex = 7;
+            this.Age_txt.TextChanged += new System.EventHandler(this.Age_txt_TextChanged);
             // 
             // Save_btn
             // 
-            this.Save_btn.Location = new System.Drawing.Point(83, 252);
+            this.Save_btn.Location = new System.Drawing.Point(75, 320);
             this.Save_btn.Margin = new System.Windows.Forms.Padding(2);
             this.Save_btn.Name = "Save_btn";
             this.Save_btn.Size = new System.Drawing.Size(75, 23);
@@ -134,7 +144,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(295, 252);
+            this.button1.Location = new System.Drawing.Point(287, 320);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -144,7 +154,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(188, 252);
+            this.button2.Location = new System.Drawing.Point(180, 320);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -186,6 +196,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(455, 242);
             this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // timer1
             // 
@@ -201,11 +212,82 @@
             this.time_lbl.Text = "Time";
             this.time_lbl.Click += new System.EventHandler(this.label5_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(474, 325);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Refresh";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 215);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Date of birth";
+            // 
+            // Birthdate_txt
+            // 
+            this.Birthdate_txt.Location = new System.Drawing.Point(104, 208);
+            this.Birthdate_txt.Name = "Birthdate_txt";
+            this.Birthdate_txt.Size = new System.Drawing.Size(76, 20);
+            this.Birthdate_txt.TabIndex = 20;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.Birthdate_txt);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.Age_txt);
+            this.groupBox1.Controls.Add(this.Surname_txt);
+            this.groupBox1.Controls.Add(this.Name_txt);
+            this.groupBox1.Controls.Add(this.Eid_txt);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(59, 32);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(195, 275);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Employee Info";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(21, 252);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(48, 17);
+            this.radioButton1.TabIndex = 21;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Male";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(104, 252);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(59, 17);
+            this.radioButton2.TabIndex = 22;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Female";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(965, 362);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.time_lbl);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox3);
@@ -214,18 +296,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Save_btn);
-            this.Controls.Add(this.Age_txt);
-            this.Controls.Add(this.Surname_txt);
-            this.Controls.Add(this.Name_txt);
-            this.Controls.Add(this.Eid_txt);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form2";
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,5 +326,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label time_lbl;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox Birthdate_txt;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
