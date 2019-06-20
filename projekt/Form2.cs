@@ -125,6 +125,7 @@ namespace projekt
                 cmdDataBase.Parameters.Add(new MySqlParameter("@IMG", imageBt));
                 myReader = cmdDataBase.ExecuteReader();
                 MessageBox.Show("Saved"); //po prawidlowym dodaniu rekordu wyskoczy okno z napisem Saved
+                conDataBase.Close();
             }
 
             catch (Exception ex) //reprezentuje bledy wystepujace podczas nieprawidlowego polaczenia z BD
@@ -148,6 +149,7 @@ namespace projekt
                 conDataBase.Open();
                 myReader = cmdDataBase.ExecuteReader();
                 MessageBox.Show("Deleted"); //po prawidlowym usunieciu wyskoczy okno z napisem Deleted
+                conDataBase.Close();
             }
 
             catch (Exception ex) //reprezentuje bledy wystepujace podczas nieprawidlowego polaczenia z BD
@@ -159,8 +161,13 @@ namespace projekt
         private void button2_Click(object sender, EventArgs e)
         //edycja danych pracownika
         {
+            byte[] imageBt = null;
+            FileStream fstream = new FileStream(this.textBox_img.Text, FileMode.Open, FileAccess.Read); //otwiera polaczenie
+            BinaryReader br = new BinaryReader(fstream); //czyta plik
+            imageBt = br.ReadBytes((int)fstream.Length);
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
-            string Query = "update database.edata set Eid = '" + this.Eid_txt.Text + "', name = '" + this.Name_txt.Text + "', surname = '" + this.Surname_txt.Text + "', age = '" + this.Age_txt.Text + "', birthdate = '" + this.Birthdate_txt.Text + "' where Eid = '" + this.Eid_txt.Text + "' ;";
+            string Query = "update database.edata set Eid = '" + this.Eid_txt.Text + "', name = '" + this.Name_txt.Text + "', surname = '" + this.Surname_txt.Text + "', age = '" 
+                + this.Age_txt.Text + "', birthdate = '" + this.Birthdate_txt.Text + "', image = @IMG where Eid = '" + this.Eid_txt.Text + "' ;";
             //dodajemy na koncu where, poniewaz Eid jest kluczem unikalnym i program musi wiedziec do ktorego pracownika odnosi sie zmiana
             MySqlConnection conDataBase = new MySqlConnection(constring);
             MySqlCommand cmdDataBase = new MySqlCommand(Query, conDataBase);
@@ -168,8 +175,10 @@ namespace projekt
             try
             {
                 conDataBase.Open();
+                cmdDataBase.Parameters.Add(new MySqlParameter("@IMG", imageBt));
                 myReader = cmdDataBase.ExecuteReader();
                 MessageBox.Show("Updated"); //po prawidlowym zedytowaniu rekordu wyskoczy okno z napisem Updated
+                conDataBase.Close();
             }
 
             catch (Exception ex) //reprezentuje bledy wystepujace podczas nieprawidlowego polaczenia z BD
@@ -239,6 +248,16 @@ namespace projekt
                     Surname_txt.Text = sSurname;
                     Age_txt.Text = sAge;
                     Birthdate_txt.Text = sBirthdate;
+
+                    byte[] imgg = (byte[])(myReader["image"]);
+                    if (imgg == null)
+                        pictureBox1.Image = null;
+                    else
+                    {   
+                        //wczytywanie zdjecia do programu z bazy danych
+                        MemoryStream mstream = new MemoryStream(imgg);
+                        pictureBox1.Image = System.Drawing.Image.FromStream(mstream);
+                    }
 
                 }
                 //funkcja ta pobiera z kolumny "Eid" jej wartosci, zapisuje pod postacia sEid, a nastepnie wyswietla w comboBoxie jako opcje do wyboru ktorymi mozemy uzupelnic textboxy jednym kliknieciem
