@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient; //do polaczenia z baza danych
 using System.IO; //umozliwia odczyt i zapis do plikow
+using System.Runtime.InteropServices; //aby przesuwac kursorem okno bez obramowki
 
 namespace projekt
 {
@@ -416,6 +417,36 @@ namespace projekt
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        //kod ponizej umozliwia przesuwanie kursorem formy bez obramowki
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd,
+                         int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+
+        private void Form2_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
