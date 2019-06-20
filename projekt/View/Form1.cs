@@ -14,13 +14,13 @@ namespace projekt
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        public Form1() //szyfrowanie hasla przy logowaniu
         {
             InitializeComponent();
             password_txt.PasswordChar = '●';
         }
 
-        private void button1_Click(object sender, EventArgs e) //przycisk polaczenia z baza danych
+        public void button1_Click(object sender, EventArgs e) //przycisk polaczenia z baza danych
         {
             try
             {

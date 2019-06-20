@@ -136,7 +136,7 @@ namespace projekt
 
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        public void button1_Click_1(object sender, EventArgs e)
         //usuwanie pracownika z bazy danych
         {
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
@@ -159,7 +159,7 @@ namespace projekt
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public void button2_Click(object sender, EventArgs e)
         //edycja danych pracownika
         {
             byte[] imageBt = null;
