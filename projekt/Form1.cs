@@ -11,17 +11,29 @@ using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices; //aby przesuwac kursorem okno bez obramowki
 
 namespace projekt
-{
+{/// <summary>
+/// okno logowania
+/// </summary>
     public partial class Form1 : Form
     {
-        public Form1() //szyfrowanie hasla przy logowaniu
+        /// <summary>
+        /// szyfrowanie hasla przy logowaniu
+        /// </summary>
+        public Form1()
         {
             InitializeComponent();
             password_txt.PasswordChar = '●';
         }
 
+        /// <summary>
+        /// przycisk logowania
+        /// </summary>
+        /// <returns>
+        /// po poprawnym wpisaniu hasla laczy sie z baza danych
+        /// </returns>
         public void button1_Click(object sender, EventArgs e) //przycisk polaczenia z baza danych
         {
+
             try
             {
                 string myConnection = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
@@ -101,7 +113,11 @@ namespace projekt
             
         }
 
-        //kod ponizej umozliwia przesuwanie kursorem formy bez obramowki
+
+        /// <summary>
+        /// kod umozliwiajacy poruszanie oknem aplikacji, zrodlo kodu w dokumentacji
+        /// </summary>
+
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 

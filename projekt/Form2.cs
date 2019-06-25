@@ -13,8 +13,14 @@ using System.Runtime.InteropServices; //aby przesuwac kursorem okno bez obramowk
 
 namespace projekt
 {
+    /// <summary>
+    /// okno z widokiem na baze danych pracownikow
+    /// </summary>
     public partial class Form2 : Form
     {
+        /// <summary>
+        /// uzyte funkcje do dzialania aplikacji
+        /// </summary>
         public Form2()
         {
             InitializeComponent();
@@ -104,8 +110,13 @@ namespace projekt
         }
 
 
-
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// przycisk dodawania danych
+        /// </summary>
+        /// <returns>
+        /// po jego wcisnieciu powstanie nowy rekord w bazie danych
+        /// </returns>
+        public void button1_Click(object sender, EventArgs e)
         //dodawanie nowego pracownika do bazy danych
         {
             //umozliwia pobieranie zdjecia
@@ -135,7 +146,12 @@ namespace projekt
             }
 
         }
-
+        /// <summary>
+        /// przycisk usuwania danych
+        /// </summary>
+        /// <returns>
+        /// po jego nacisnieciu wybrany rekord zostanie usuniety z bazy danych
+        /// </returns>
         public void button1_Click_1(object sender, EventArgs e)
         //usuwanie pracownika z bazy danych
         {
@@ -158,7 +174,12 @@ namespace projekt
                 MessageBox.Show(ex.Message);
             }
         }
-
+        /// <summary>
+        /// przycisk edycji danych
+        /// </summary>
+        /// <returns>
+        /// po jego wcisnieciu wybrane dane pracownika zostana zaktualizowane w bazie danych
+        /// </returns>
         public void button2_Click(object sender, EventArgs e)
         //edycja danych pracownika
         {
@@ -194,7 +215,9 @@ namespace projekt
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-            //combobox z imionami pracownikow
+        /// <summary>
+        /// combobox z imionami pracownikow
+        /// </summary>
         {
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
             string Query = "select * from database.edata where name = '" + comboBox1.Text + "';";
@@ -226,7 +249,9 @@ namespace projekt
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-            //combobox z nr ID pracownikow
+        /// <summary>
+        /// combobox z ID pracownikow
+        /// </summary>
         {
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
             string Query = "select * from database.edata where Eid = '" + comboBox2.Text + "';";
@@ -271,8 +296,11 @@ namespace projekt
             }
         }
 
+
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-            //combobox z nazwiskami pracownikow
+        /// <summary>
+        /// combobox z nazwiskami pracownikow
+        /// </summary>
         {
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
             string Query = "select * from database.edata where surname = '" + comboBox3.Text + "';";
@@ -297,7 +325,10 @@ namespace projekt
             }
         }
 
-        void load_table() //funkcja pobierajaca nam tabele z bazy danych i wyswietlajaca ja w aplikacji
+        void load_table()
+        /// <summary>
+        /// funkcja pobierajaca nam tabele z bazy danych i wyswietlajaca ja w aplikacji
+        /// </summary>
         {
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
             MySqlConnection conDataBase = new MySqlConnection(constring);
@@ -330,13 +361,21 @@ namespace projekt
         }
 
         private void timer1_Tick(object sender, EventArgs e)
+        /// <summary>
+        /// timer uzyty do wyswietlania obecnej daty systemowej
+        /// </summary>
         {
             DateTime dateTime = DateTime.Now; //ustawianie daty na obecna
             this.time_lbl.Text = dateTime.ToString(); //wyswietlanie daty w polu tekstowym, konwersja na string
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) 
-        //sluzy temu aby po nacisnieciu komorki w tabeli textboxy wypelnily sie danymi tej osoby
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// uzupelnia dane z rekordu
+        /// </summary>
+        /// <returns>
+        /// po jego nacisnieciu textboxy wypelnia sie danymi z wybranego rekordu tabeli
+        /// </returns>
         {
             if (e.RowIndex >=0)
             {
@@ -350,7 +389,13 @@ namespace projekt
             }
         }
 
-        private void button3_Click_1(object sender, EventArgs e) //przycisk do odswiezania tablicy po zaktualizowaniu rekordow
+        private void button3_Click_1(object sender, EventArgs e) 
+        /// <summary>
+        /// odswieza tablice
+        /// </summary>
+        /// <returns>
+        /// po jego nacisnieciu wyswietlona baza zostanie zaktualizowana o poprzednie zmiany
+        /// </returns>
         {
             string constring = "datasource=127.0.0.1;port=3306;username=root;password=lksada31";
             MySqlConnection conDataBase = new MySqlConnection(constring);
@@ -392,17 +437,31 @@ namespace projekt
 
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e) //znacznik plci meskiej
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// znacznik plci meskiej
+        /// </summary>
+
         {
             Gender = "Male";
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e) //znacznik plci zenskiej
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// znacznik plci zenskiej
+        /// </summary>
+
         {
             Gender = "Female";
         }
 
         private void button4_Click_1(object sender, EventArgs e)
+        /// <summary>
+        /// przycisk wczytywania zdjec
+        /// </summary>
+        /// <returns>
+        /// po jego nacisnieciu otworzy sie okno do wyboru sciezki zdjecia z dysku
+        /// </returns>
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "JPG Files(*.jpg)|*.jpg|PNG Files(*.png)|*.png|All Files(*.*)|*.*";
@@ -418,8 +477,10 @@ namespace projekt
         {
 
         }
+        /// <summary>
+        /// umozliwia przesuwanie kursorem formy bez obramowki
+        /// </summary>
 
-        //kod ponizej umozliwia przesuwanie kursorem formy bez obramowki
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
